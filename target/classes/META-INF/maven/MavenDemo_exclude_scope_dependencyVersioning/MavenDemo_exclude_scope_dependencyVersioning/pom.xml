@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>MavenDemo_exclude_scope_dependencyVersioning</groupId>
+  <artifactId>MavenDemo_exclude_scope_dependencyVersioning</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <!-- we have org hibernate dependencies which has itself transitive depenencies
+  
+  now we want to exclude some of these transitive dependencies
+  
+  
+   -->
+   
+   <dependencies>
+   
+   	<dependency>
+   		<groupId>org.hibernate</groupId>
+   		<artifactId>hibernate-core</artifactId>
+   		<version>5.0.6.Final</version>
+   		<!-- if you save the exclusion, the jar will not be listed anymore in
+   		Maven Dependencies
+   		
+   		 -->
+   		<exclusions>
+   			<exclusion>
+		      <groupId>org.jboss.logging</groupId>
+		      <artifactId>jboss-logging</artifactId>
+   			</exclusion>
+   		</exclusions>
+   	</dependency>
+   	
+   	<!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <!-- you can also define a range of version
+	    
+	    [4.1] means the latest version of 4.1 (4.1.x)
+	    
+	    
+	    -->
+	    <version>4.13.2</version>
+	    <!-- junit jars will only be used in the lifecycle step 'test' 
+	    
+	    you can define as well 'runtime'. this has nothing to do with lifecycle step
+	    there is also 'provided'
+	    
+	    -->
+	    <scope>test</scope>
+	</dependency>
+
+   
+   </dependencies>
+   
+  
+</project>
